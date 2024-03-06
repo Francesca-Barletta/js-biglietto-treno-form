@@ -6,7 +6,7 @@ console.log('form biglietto treno');
 const inputKmElement = document.getElementById('km'); //stringa
 console.log(inputKmElement);
 //dichiaro una const per stampare i km nella schermata
-const pTravelElement = document.getElementById('travel-km')
+
 
 
 //il secondo è l'età del passeggero
@@ -14,7 +14,7 @@ const pTravelElement = document.getElementById('travel-km')
 const inputEtaElement = document.getElementById('eta'); //stringa
 console.log(inputEtaElement);
 //dichiaro una const per stampare i km nella schermata
-const pAgeElement = document.getElementById('age')
+
 // dichiaro una const per l'input con id=submit e lo prendo dal dom con getElemenytById
 const submitElement = document.getElementById('submit'); //stringa
 
@@ -27,8 +27,7 @@ const refreshElement = document.getElementById('refresh')
 const inputNameElement = document.getElementById('first-name');
 const inputLastNameElement = document.getElementById('last-name');
 //dichiaro una const per stampare il nome completo nella schermata
-const pNAmeElement = document.getElementById('ps-name');
-const pSurnameElement = document.getElementById('ps-surname');
+
 
 //dichiaro  le variabili che andrò a trattare cliccando su invia
 let km, eta, prezzoBase, sconto, prezzoFinale, nome, cognome;
@@ -66,9 +65,6 @@ submitElement.addEventListener('click', function(){
     //prezzo base che è dato da il numero dei km per 0.21
     prezzoBase = km * 0.21;
     console.log('prezzo base: ',prezzoBase);
-    const pDiscountElement = document.getElementById('discount');
-    const pLastPriceElement = document.getElementById('last-price');
-    const pBasePriceElement = document.getElementById('bs-price')
     //il prezzo scontato del 20% se età passeggero minorenne
     if (eta === "minorenne"){
         
@@ -84,7 +80,7 @@ submitElement.addEventListener('click', function(){
         //il prezzo finale va stampato in console log
         console.log('prezzo finale euro: ',prezzoFinale.toFixed(2));
         //il prezzo scontato del 40% se età passeggero over 65
-    } else if (eta === "over65"){
+    } if (eta === "over65"){
         
         //calcolo lo sconto del 40%
         sconto = prezzoBase * 0.40;
@@ -94,29 +90,32 @@ submitElement.addEventListener('click', function(){
         prezzoFinale = prezzoBase - sconto;
         //il prezzo finale va stampato in console log
         console.log('prezzo finale euro: ',prezzoFinale.toFixed(2));
-    } else (eta === "nessuno");{
+    } else if (eta === "nessuno");{
         sconto = 0;
         prezzoFinale = prezzoBase - sconto;
         console.log('prezzo finale euro: ',prezzoFinale.toFixed(2));
     }
-    pNAmeElement.innerHTML += `
-        <span class="text-dark">${nome}</span>`;
-    pSurnameElement.innerHTML += `
-        <span class="text-dark">${cognome}</span>`;
-    pTravelElement.innerHTML += `
-        <span class="text-dark">${km}</span>`;
-    pAgeElement.innerHTML += `
-        <span class="text-dark">${eta}</span>`;
-    pBasePriceElement.innerHTML += `
-        <span class="text-dark">${prezzoBase.toFixed(2)}</span>`;
-    pDiscountElement.innerHTML += `
-        <span class="text-dark">${sconto.toFixed(2)}</span>`;
-    pLastPriceElement.innerHTML += `
-        <span class="text-dark">${prezzoFinale.toFixed(2)}</span>`
+  const printElement = document.getElementById('ticket-screen')
+
+  printElement.innerHTML = `
+  <div><p>Nome: <span>${nome}</span></p></div>
+  <div><p>Cognome: <span>${cognome}</span></p></div>
+  <div><p>km: <span>${km}</span></p></div>
+  <div><p>Prezzo base :<span>${prezzoBase}</span></p></div>
+  <div><p>Sconto età: <span>${eta}</span></p></div>
+  <div><p>Prezzo finale :<span>${prezzoFinale}</span></p></div>`
     
 //se l'utente non è minorenne o over 65 pagherà il prezzo base senza sconto 
-})
 
 refreshElement.addEventListener('click', function(){
     console.log('aggiorna')
+    nome = ''
+    cognome = ''
+    eta = ''
+    km = ''
+    printElement.innerHTML = ``
+
 })
+
+})
+
