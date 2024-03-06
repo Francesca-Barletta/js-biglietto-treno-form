@@ -53,13 +53,13 @@ submitElement.addEventListener('click', function(){
     console.log('Nome e Cognome: ',nome ,cognome);
 
     if(km > 0 && 
-       eta > 0 &&
-       !isNaN(km) &&
-       !isNaN(eta)){
+       eta !== "" &&
+       !isNaN(km)){
         console.log('km ',km);
         console.log('età ',eta);
-        console.log('Nome e Cognome: ',nome ,cognome);
-       } else{
+        console.log('Nome: ',nome);
+        console.log('Cognome: ', cognome)
+    } else{
         alert('i dati inseriti non sono validi')
        }
 //sulla base di questo calcolare il prezzo del biglietto in base a
@@ -100,19 +100,19 @@ submitElement.addEventListener('click', function(){
         console.log('prezzo finale euro: ',prezzoFinale.toFixed(2));
     }
     pNAmeElement.innerHTML += `
-        <span>${nome}</span>`;
+        <span class="text-dark">${nome}</span>`;
     pSurnameElement.innerHTML += `
-        <span>${cognome}</span>`;
+        <span class="text-dark">${cognome}</span>`;
     pTravelElement.innerHTML += `
-        <span>${km}</span>`;
+        <span class="text-dark">${km}</span>`;
     pAgeElement.innerHTML += `
-        <span>${eta}</span>`;
+        <span class="text-dark">${eta}</span>`;
     pBasePriceElement.innerHTML += `
-        <span>${prezzoBase.toFixed(2)}</span>`;
+        <span class="text-dark">${prezzoBase.toFixed(2)}</span>`;
     pDiscountElement.innerHTML += `
-        <span>${sconto.toFixed(2)}</span>`;
+        <span class="text-dark">${sconto.toFixed(2)}</span>`;
     pLastPriceElement.innerHTML += `
-        <span>${prezzoFinale.toFixed(2)}</span>`
+        <span class="text-dark">${prezzoFinale.toFixed(2)}</span>`
     
 //se l'utente non è minorenne o over 65 pagherà il prezzo base senza sconto 
 })
